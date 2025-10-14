@@ -1,38 +1,58 @@
 import React, { useEffect, useState } from "react";
+import "./App.css";
 
-export default function App() {
-  const [orgData, setOrgData] = useState(null);
+function App() {
+  const [org, setOrg] = useState(null);
 
   useEffect(() => {
     fetch("/org.json")
       .then((res) => res.json())
-      .then(setOrgData)
-      .catch(console.error);
+      .then(setOrg)
+      .catch((err) => console.error("Error loading org.json:", err));
   }, []);
 
-  if (!orgData) return <h2 style={{ padding: 20 }}>Loading...</h2>;
+  if (!org) {
+    return <div className="loading">Loading organization data...</div>;
+  }
 
   return (
-    <div style={{ padding: 20 }}>
-      <h1>{orgData.title}</h1>
-      <h2>{orgData.manager.title}: {orgData.manager.name}</h2>
-      <div style={{ display: "flex", gap: 20 }}>
-        {orgData.positions.map((p) => (
-          <div
-            key={p.title}
-            style={{
-              border: "2px solid #2d354b",
-              borderRadius: 10,
-              padding: 10,
-              width: 200
-            }}
-          >
+    <div className="app-container">
+      <h1>{org.title}</h1>
+
+      <div className="manager-card">
+        <div className="avatar">👤</div>
+        <div>
+          <h2>{org.manager.title}</h2>
+          <p>{org.manager.name}</p>
+        </div>
+      </div>
+
+      <div className="positions-grid">
+        {org.positions.map((p) => (
+          <div className="position-card" key={p.title}>
+            <div className="avatar">👤</div>
             <h3>{p.title}</h3>
-            <p style={{ fontWeight: "bold" }}>{p.name || "(vacant)"}</p>
-            <p style={{ fontSize: 12 }}>{p.description}</p>
+            <p className="optional">
+              {p.name ? p.name : "Nombre (opcional)"}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <hr />
+      <h3>Funciones por Puesto</h3>
+      <div className="functions-box">
+        {org.positions.map((p, i) => (
+          <div key={i} className="function-item">
+            <b>
+              {i + 1}. {p.title}
+            </b>
+            <p>{p.description}</p>
           </div>
         ))}
       </div>
     </div>
   );
 }
+
+export default App;
