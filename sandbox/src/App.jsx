@@ -5,7 +5,7 @@ function App() {
   const [org, setOrg] = useState(null);
 
   useEffect(() => {
-    fetch("/org.json")
+   fetch(`/org.json?v=${Date.now()}`, { cache: 'no-store' })
       .then((res) => res.json())
       .then(setOrg)
       .catch((err) => console.error("Error loading org.json:", err));
