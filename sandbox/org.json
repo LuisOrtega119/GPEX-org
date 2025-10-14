@@ -1,0 +1,29 @@
+{
+  "title": "Organigrama GPEX México",
+  "manager": {
+    "title": "MX Manager",
+    "name": "Luis Ortega"
+  },
+  "positions": [
+    {
+      "title": "AE",
+      "name": "",
+      "description": "Owns the full sales cycle: prospecting, booking, and managing freight. Develops customer relationships, negotiates rates, and coordinates with carriers. Revenue generators measured by gross profit, load count, and retention."
+    },
+    {
+      "title": "SSR",
+      "name": "",
+      "description": "Provides operational and administrative support to Sales Executives. Handles rate confirmations, paperwork, carrier updates, and ensures smooth load execution."
+    },
+    {
+      "title": "CSR",
+      "name": "",
+      "description": "Manages customer service operations. Tracks shipments, communicates with carriers and clients, resolves issues, and ensures timely updates."
+    },
+    {
+      "title": "BDR",
+      "name": "",
+      "description": "Business Development Representative focused on identifying new shippers, generating qualified leads, and supporting market expansion."
+    }
+  ]
+}
